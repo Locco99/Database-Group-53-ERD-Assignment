@@ -1,0 +1,58 @@
++-------------------+       +-------------------+       +-------------------+
+|  product_category |       |      brand        |       |  size_category    |
++-------------------+       +-------------------+       +-------------------+
+| PK: id            |       | PK: id            |       | PK: id            |
+|    name           |       |    name           |       |    name           |
+|    description    |       |    description    |       |    description    |
++-------------------+       +-------------------+       +-------------------+
+       |                        |                               |
+       |                        |                               |
+       |                        |                               |
++-------------------+       +-------------------+       +-------------------+
+|      product      |       |  product_variation|       |   size_option     |
++-------------------+       +-------------------+       +-------------------+
+| PK: id            |       | PK: id            |       | PK: id            |
+| FK: category_id   |------>| FK: product_id    |       | FK: size_category |
+| FK: brand_id      |       | FK: color_id      |       |    value          |
+|    name           |       | FK: size_option_id|       +-------------------+
+|    description    |       +-------------------+               |
+|    base_price     |               |                           |
+|    created_at     |               |                           |
+|    updated_at     |               |                           |
++-------------------+               |                           |
+       |                            |                           |
+       |                            |                           |
++-------------------+       +-------------------+       +-------------------+
+|  product_image    |       |   product_item    |       |      color        |
++-------------------+       +-------------------+       +-------------------+
+| PK: id            |       | PK: id            |       | PK: id            |
+| FK: product_id    |       | FK: product_id    |       |    name           |
+|    image_url      |       | FK: variation_id  |       |    hex_code       |
+|    is_primary     |       |    SKU            |       +-------------------+
+|    alt_text       |       |    quantity       |
++-------------------+       |    price          |
+                           |    created_at     |
+                           |    updated_at     |
+                           +-------------------+
+                                         |
+                                         |
+                           +-------------------------------+
+                           |                               |
+                   +-------------------+       +-------------------+
+                   | attribute_category|       |  attribute_type   |
+                   +-------------------+       +-------------------+
+                   | PK: id            |       | PK: id            |
+                   |    name           |       |    type_name      |
+                   |    description    |       |    description    |
+                   +-------------------+       +-------------------+
+                           |                               |
+                           |                               |
+                   +-------------------+                   |
+                   | product_attribute |                   |
+                   +-------------------+                   |
+                   | PK: id            |-------------------+
+                   | FK: product_id    |
+                   | FK: category_id   |
+                   | FK: attribute_type|
+                   |    value         |
+                   +-------------------+
